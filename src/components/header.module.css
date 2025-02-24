@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+.container {
+    height: 120px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 70vw;
+    margin: auto;
+    /* background-color: yellow; */
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.container .navbar {
+    justify-content: space-between;
+  }
+
+.container .navbar ul li {
+   padding: 10px;
+   margin: 0 10px;
+   font-family: "Karla";
+   font-size: 1rem;
+   font-weight: 500;
+   /* background-color: cadetblue; */
+}
+
+.logo {
+    width: 225px;
+    height: 55%;
+}
+
+.tabNavbar {
+    display: flex;
+    align-items: center;
+    gap: 50%;
+}
+
+.tabNavbar img {
+    width: 35%;
+}
+
+.mobileNavbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14%;
+    height: 100%;
+    width: 85vw;
+    margin: auto;
+}
+
+.mobileNavbar img:nth-child(1), img:nth-child(3) {
+    width: 7vw;
+}
+
+.mobileLogo {
+    width: 45vw;
+}
+
+@media (max-width: 1233px) and (min-width: 1024px) {
+    .navbar {
+        width: 85vw;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 600px) {
+    .navbar {
+        width: 90vw
+    }
+
+    .tabNavbar {
+        gap: 20%;
+    }
+    
+}
