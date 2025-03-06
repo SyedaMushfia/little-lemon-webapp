@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from "./header.module.css"
 import useViewportWidth from '../hooks/useViewportWidth'
+import { Link } from 'react-router';
 
 function Header() {
   const width = useViewportWidth();
@@ -17,12 +18,12 @@ function Header() {
             <img src='../../images/logo.jpg' alt='little-lemon-logo' className={styles.logo}/>
             <nav>
               <ul>
-                <li><a>Home</a></li>
-                <li><a>About</a></li>
-                <li><a>Menu</a></li>
-                <li><a>Reservations</a></li>
-                <li><a>Order Online</a></li>
-                <li><a>Login</a></li>
+                <li><Link to='/'>Home</Link></li>
+                <li><Link to='/about'>About</Link></li>
+                <li><Link to='/menu'>Menu</Link></li>
+                <li><Link to='/bookings'>Reservations</Link></li>
+                <li><Link to='/orderonline'>Order Online</Link></li>
+                <li><Link to='login'>Login</Link></li>
               </ul>
             </nav>
           </div>
