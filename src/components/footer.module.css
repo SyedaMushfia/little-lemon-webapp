@@ -2,6 +2,8 @@
 
 .container {
     background-color: #495e57;
+    padding-top: 35px;
+    padding-bottom: 35px;
 }
 
 @media (max-width: 768px) {
