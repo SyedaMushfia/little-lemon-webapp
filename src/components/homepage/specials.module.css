@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Markazi+Text:wght@400..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+.container {
+    /* background-color: blueviolet; */
+    padding-top: 50px;
+    margin-bottom: 100px;
+}
+
+.container .heading {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-around;
+    padding-bottom: 25px;
+}
+
+.container .heading h1 {
+    all: unset;
+    font-family: 'Markazi Text';
+    font-size: 4rem;
+}
+
+.container .heading button {
+    all: unset;
+    background-color: #f4ce14;
+    font-family: "Karla";
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 10px 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.desktopProductCard {
+    width: 78vw;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.desktopProductCard div {
+    background-color: #e5e3e3;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 15px;
+}
+
+@media (max-width: 1024px) {
+    .desktopProductCard {
+        width: 82vw;
+    }
+
+    .desktopProductCard div{
+        width: 25vw;
+    }
+}
+
+.desktopProductCard img{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.desktopProductCard .desktopProductDetails .name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.desktopProductCard .desktopProductDetails .name h1 {
+    all: unset;
+    font-family: "Karla";
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.desktopProductCard .desktopProductDetails .name p {
+    all: unset;
+    font-family: "Karla";
+    font-size: 1rem;
+    font-weight: 500;
+    color: #f13333;
+}
+
+.desktopProductCard .description {
+    font-family: "Karla";
+    font-size: 1rem;
+    color: #636060;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 25px;
+    line-height: 20px; 
+}
+
+.desktopProductCard .delivery {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 25px;
+}
+
+.desktopProductCard .delivery h3 {
+    all: unset;
+    font-family: "Karla";
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-left: 25px;
+}
+
+.tabContainer {
+    padding-top: 50px;
+    margin-bottom: 75px;
+    /* background-color: aquamarine; */
+}
+
+.tabContainer .heading {
+    margin-left: 5vw;
+    padding-bottom: 25px;
+}
+
+.tabContainer .heading h1 {
+    all: unset;
+    font-family: 'Karla';
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+/* @media (max-width: 425px) {
+    .tabContainer {
+        padding-top: 0px;
+        margin-bottom: 50px;
+    }
+
+    .tabContainer .heading h1 {
+        font-size: 1.25rem;
+        font-weight: 800;
+    }
+} */
+
+.tabProductCard {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* background-color: #f13333; */
+}
+
+.tabProductDetails {
+    width: 90vw;
+    margin: auto;
+    display: flex;
+    gap: 25px;
+    /* justify-content: space-around; */
+    /* background-color: #f13333; */
+    border-bottom: 1px #c2c1c1 solid;
+    /* align-items: center; */
+}
+
+@media (max-width: 425px) {
+    .tabProductDetails {
+        padding-bottom: 20px;
+    }
+
+    .tabContainer {
+        padding-top: 30px;
+    }
+
+    .tabContainer .heading h1 {
+        font-size: 2rem;
+    }
+}
+
+.tabProductDetails img {
+    width: 20vw;
+    height: 150px;
+    object-fit: cover;
+    margin-top: 15px;
+}
+
+.tabProductDetails div {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* justify-content: space-evenly; */
+}
+
+.tabProductDetails div h1 {
+    all: unset;
+    font-family: "Karla";
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.tabProductDetails .description {
+    all: unset;
+    font-family: "Karla";
+    font-size: 1rem;
+    color: #636060;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px; 
+}
+
+.tabProductDetails .price {
+    all: unset;
+    font-family: "Karla";
+    font-size: 1rem;
+    font-weight: 600;
+    color: #636060;
+}
+
+.tabProductDetails .delivery {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 25px;
+}
+
+.tabProductDetails .delivery h3 {
+    all: unset;
+    font-family: "Karla";
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-right: 5px;
+}

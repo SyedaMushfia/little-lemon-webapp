@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Markazi+Text:wght@400..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+.container {
+    background-color: #495e57;
+    display: flex;
+    justify-content: space-around;
+    height: 400px;
+    margin-bottom: 75px;
+}
+
+@media (max-width: 425px) {
+    .container {
+        margin-bottom: 20px;
+    }
+}
+
+.container div {
+    background-color: #495e57;
+    height: fit-content;
+    margin-top: 30px;
+}
+
+.container div h1 {
+    height: 55px;
+    margin: 0;
+    color: #f4ce14;
+    font-family: "Markazi Text";
+    font-size: 4rem;
+    font-weight: 400;
+}
+
+.container div h2 {
+    margin: 0;
+    font-family: "Markazi Text";
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.container div p {
+    margin: 0;
+    font-family: "Karla";
+    font-size: 1.25rem;
+    font-weight: 400;
+    max-width: 22ch;
+    line-height: 1.5;
+}
+
+.container div h2, p {
+    color: white;
+}
+
+.container button {
+    all: unset;
+    background-color: #f4ce14;
+    font-family: "Karla";
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 10px 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.container img {
+    width: 400px;
+    height: 430px;
+    object-fit: cover;
+    margin-top: 45px;
+    border-radius: 18px;
+}
+
+@media (max-width: 768px) and (min-width: 425px) {
+    .container img {
+        width: 45vw;
+    }    
+}
+
+@media (max-width: 425px) {
+    .container {
+        justify-content: flex-start;
+        padding-left: 5%;
+    }
+}

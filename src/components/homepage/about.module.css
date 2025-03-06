@@ -1,0 +1,174 @@
+.container {
+    width: 70vw;
+    margin: auto;
+    display: flex;
+    /* gap: 31.75%; */
+    justify-content: space-around;
+    /* padding-bottom: 186px; */
+    /* padding-top: 150px; */
+    margin-bottom: 100px;
+    /* background-color: blueviolet; */
+}
+
+.container .aboutRestaurant {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 81px;
+    /* background-color: aquamarine; */
+    /* justify-content: flex-start; */
+}
+
+.container .aboutRestaurant h1 {
+    all: unset;
+    color: #495e57;
+    font-family: "Markazi Text";
+    font-size: 4rem;
+    font-weight: 400;
+}
+
+.container .aboutRestaurant h2 {
+    all: unset;
+    font-family: "Markazi Text";
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #f4ce14;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+.container .aboutRestaurant p {
+    all: unset;
+    font-family: "Karla";
+    color: black;
+    width: 40ch;
+    line-height: 25px;
+}
+
+.container .imagesContainer {
+    /* background-color: aquamarine; */
+    display: flex;
+    /* flex-direction: column; */
+}
+
+.container .imagesContainer .images:nth-child(2) {
+    width: 21vw;
+    height: 64vh;
+}
+
+.container .imagesContainer .images:nth-child(1) {
+    width: 21vw;
+    height: 65vh;
+    margin-right: -140px;
+    margin-top: 150px;
+    z-index: 2;
+    /* margin-top: -78px; */
+    /* margin-right: 50px; */
+    /* position: absolute;
+    top: 1940px;
+    right: 370px; */
+}
+
+.container .imagesContainer .images:nth-child(2) img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.container .imagesContainer .images:nth-child(1) img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 20px;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: 85vw;
+        margin-bottom: 80px;
+    }
+
+    .container .aboutRestaurant p {
+        width: 35ch;
+    }
+
+    .container .imagesContainer .images:nth-child(1) {
+        width: 25vw;
+        height: 68vh;
+    }
+
+    .container .imagesContainer .images:nth-child(2) {
+        width: 25vw;
+        height: 67vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90vw;
+    }
+
+    .container .aboutRestaurant p {
+        width: 35ch;
+        font-size: 0.85rem;
+        line-height: 22px;
+    }
+
+    .container .aboutRestaurant h1 {
+        font-size: 3.25rem;
+    }
+
+    .container .aboutRestaurant h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .container .imagesContainer .images:nth-child(1) {
+        width: 30vw;
+        height: 62vh;
+    }
+
+    .container .imagesContainer .images:nth-child(2) {
+        width: 30vw;
+        height: 61vh;
+    }
+}
+
+@media (max-width: 425px) {
+    .container {
+        width: 78vw;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        /* background-color: aquamarine; */
+        margin-top: -20px;
+    }
+
+    .container .aboutRestaurant {
+        padding-bottom: 15px;
+        padding-top: 20px;
+    }
+
+    .container .aboutRestaurant p {
+        text-align: center;
+    }
+
+    .container .imagesContainer {
+        /* background-color: #f4ce14; */
+        margin: auto;
+    }
+
+    .container .imagesContainer .images:nth-child(1) {
+        width: 50vw;
+        height: 60vh;
+        margin-top: 145px;
+    }
+
+    .container .imagesContainer .images:nth-child(2) {
+        width: 50vw;
+        height: 63vh;
+        margin-left: 35px;
+        /* margin-top: 15px; */
+    }
+}
