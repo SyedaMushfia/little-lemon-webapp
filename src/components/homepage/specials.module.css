@@ -2,14 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 .container {
-    /* background-color: blueviolet; */
     padding-top: 50px;
     margin-bottom: 100px;
 }
 
 .container .heading {
     display: flex;
-    /* align-items: center; */
     justify-content: space-around;
     padding-bottom: 25px;
 }
@@ -121,7 +119,6 @@
 .tabContainer {
     padding-top: 50px;
     margin-bottom: 75px;
-    /* background-color: aquamarine; */
 }
 
 .tabContainer .heading {
@@ -136,23 +133,10 @@
     font-weight: 500;
 }
 
-/* @media (max-width: 425px) {
-    .tabContainer {
-        padding-top: 0px;
-        margin-bottom: 50px;
-    }
-
-    .tabContainer .heading h1 {
-        font-size: 1.25rem;
-        font-weight: 800;
-    }
-} */
-
 .tabProductCard {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    /* background-color: #f13333; */
 }
 
 .tabProductDetails {
@@ -160,10 +144,7 @@
     margin: auto;
     display: flex;
     gap: 25px;
-    /* justify-content: space-around; */
-    /* background-color: #f13333; */
     border-bottom: 1px #c2c1c1 solid;
-    /* align-items: center; */
 }
 
 @media (max-width: 425px) {
@@ -192,7 +173,6 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    /* justify-content: space-evenly; */
 }
 
 .tabProductDetails div h1 {
