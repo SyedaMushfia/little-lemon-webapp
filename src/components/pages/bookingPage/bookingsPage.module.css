@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Markazi+Text:wght@400..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+.imgContainer {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),  
+                url(../../../../public/images/bruchetta.svg);
+    min-height: 500px;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.imgContainer p:nth-child(1) {
+    all: unset;
+    color: #f4ce14;
+    font-family: "Karla";
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.imgContainer p:nth-child(2) {
+    all: unset;
+    font-family: "Markazi Text";
+    width: 15ch;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 500;
+    line-height: 75px;
+    letter-spacing: 3px;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .imgContainer {
+        min-height: 400px;
+    }
+
+    .imgContainer p:nth-child(2) {
+        font-size: 4rem;
+        line-height: 65px;
+    }
+}
+
+@media (max-width: 425px) {
+    .imgContainer {
+        min-height: 250px;
+    }
+
+    .imgContainer p:nth-child(2) {
+        font-size: 3rem;
+        line-height: 55px;
+    }
+}
