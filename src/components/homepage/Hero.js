@@ -14,7 +14,7 @@ function Hero() {
            <h1>Little Lemon</h1>
            <h2>Chicago</h2>
            <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
-           <button>Reserve a Table</button>
+           <button aria-label="Reserve a table at Little Lemon">Reserve a Table</button>
          </div>
          {isDesktop && <img src='../images/restaurantfood.jpg' alt='restaurant-food'/>}
       </div>

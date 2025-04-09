@@ -57,8 +57,8 @@ function Footer() {
     <footer className={styles.container}>
       {isDesktop && (
         <div className={styles.desktopFooter}>
-         <img src='../../images/footerlogo.png' alt='little-lemon-logo' className={styles.logo}/>
-        <nav>
+         <img src='../../images/footerlogo.png' alt='little lemon logo' className={styles.logo}/>
+          <nav aria-label="Doormat Navigation">
             <ul>
               {doormatNavigation.map(link => (
                 <li key={link}>
@@ -67,14 +67,18 @@ function Footer() {
                 </li>
               ))}
             </ul>
-            <ul>
-              {contact.map(info => (
-                <li key={info.detail}>
-                  <div>{info.icon}</div>
-                  {info.detail}
-                </li>
-              ))}
-            </ul>
+          </nav>
+          <nav aria-label="Contact Information">
+              <ul>
+                {contact.map(info => (
+                  <li key={info.detail}>
+                    <div>{info.icon}</div>
+                    {info.detail}
+                  </li>
+                ))}
+              </ul>
+          </nav>
+          <nav aria-label="Social Media Links">
             <ul>
                 {socialMediaIcons.map(icon => (
                   <li key={icon.name}>{icon.icon}</li>
@@ -86,7 +90,7 @@ function Footer() {
       {isTab && (
         <>
           <div className={styles.tabFooter}>
-          <img src='../../images/footerlogo.png' alt='little-lemon-logo' className={styles.logo}/>
+          <img src='../../images/footerlogo.png' alt='little lemon logo' className={styles.logo}/>
           <ul>
                 {socialMediaIcons.map(icon => (
                   <li key={icon.name}>{icon.icon}</li>
@@ -94,14 +98,16 @@ function Footer() {
           </ul>
         </div>
         <div className={styles.tabFooterNavLinks}>
-          <nav>
-          <ul>
-              {doormatNavigation.map(link => (
-                <li key={link}>
-                  {link}
-                </li>
-              ))}
+          <nav aria-label="Doormat Navigation">
+            <ul>
+                {doormatNavigation.map(link => (
+                  <li key={link}>
+                    {link}
+                  </li>
+                ))}
             </ul>
+          </nav>
+          <nav aria-label="Contact Information">
             <ul>
               {contact.map(info => (
                 <li key={info.detail}>
@@ -116,29 +122,33 @@ function Footer() {
       )}
       {isMobile && (
         <div className={styles.mobileFooter}>
-         <img src='../../images/footerlogo.png' alt='little-lemon-logo' className={styles.logo}/>
-         <nav>
-           <ul>
-                {doormatNavigation.map(link => (
-                  <li key={link}>
-                    {link}
+         <img src='../../images/footerlogo.png' alt='little lemon logo' className={styles.logo}/>
+           <nav aria-label="Doormat Navigation">
+            <ul>
+                  {doormatNavigation.map(link => (
+                    <li key={link}>
+                      {link}
+                    </li>
+                  ))}
+              </ul>
+            </nav>
+            <nav aria-label="Social Media Links">
+              <ul>
+                  {socialMediaIcons.map(icon => (
+                    <li key={icon.name}>{icon.icon}</li>
+                  ))}
+              </ul>
+            </nav>
+            <nav aria-label="Contact Information">
+              <ul>
+                {contact.map(info => (
+                  <li key={info.detail}>
+                    <div className={styles.icon}>{info.icon}</div>
+                    {info.detail}
                   </li>
                 ))}
-            </ul>
-            <ul>
-                {socialMediaIcons.map(icon => (
-                  <li key={icon.name}>{icon.icon}</li>
-                ))}
-            </ul>
-            <ul>
-              {contact.map(info => (
-                <li key={info.detail}>
-                  <div className={styles.icon}>{info.icon}</div>
-                  {info.detail}
-                </li>
-              ))}
-            </ul>
-         </nav>
+              </ul>
+            </nav>
         </div>
       )}
     </footer>

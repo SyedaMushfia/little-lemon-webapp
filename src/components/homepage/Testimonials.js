@@ -37,10 +37,10 @@ function Testimonials() {
       <h1>Testimonials</h1>
       <div className={styles.cardContainer}>
         {people.map(person => (
-            <div key={person.name} className={styles.card}>
+            <div key={person.name} className={styles.card} role="article" aria-labelledby={`testimonial-${person.name}`}>
               <img src={person.image} alt={person.name}/>
               <h2>{person.name}</h2>
-              <div className={styles.starContainer}>
+              <div className={styles.starContainer} aria-label={`Rating: ${person.rating} out of 5 stars`}>
                 {stars.map((_, i) => (
                     <span key={i}>
                     {i < person.rating ? <StarIcon className={styles.stars}/> : <StarBorderIcon className={styles.stars}/>}

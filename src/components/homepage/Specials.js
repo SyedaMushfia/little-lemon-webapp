@@ -36,7 +36,7 @@ const isMobile = width <= 425;
         <div className={styles.container}>
           <div className={styles.heading}>
            <h1>This weeks specials!</h1>
-           <button>Online Menu</button>
+           <button aria-label="View our online menu">Online Menu</button>
          </div>
          <div className={styles.desktopProductCard}>
          {productDetails.map(food => (

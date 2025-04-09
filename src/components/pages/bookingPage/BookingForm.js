@@ -82,13 +82,13 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
         <div className={styles.formSteps}>
             <div className={styles.formStepsBtns}>
                 <div>1</div>
-                <button type='button' onClick={handleClickReserve}>RESERVE</button></div>
+                <button type='button' onClick={handleClickReserve} aria-label="Step 1: Reserve">RESERVE</button></div>
             <div className={styles.formStepsBtns}>
                 <div>2</div>
-                <button type='button' onClick={handleClickContact}>CONTACT</button></div>
+                <button type='button' onClick={handleClickContact} aria-label="Step 2: Contact">CONTACT</button></div>
             <div className={styles.formStepsBtns}>
                 <div>3</div>
-                <button type='button' onClick={handleClickSummary}>SUMMARY</button></div>
+                <button type='button' onClick={handleClickSummary} aria-label="Step 3: Summary">SUMMARY</button></div>
         </div>
         <form onSubmit={handleSubmit}>
             {step === 1 && <>
@@ -97,13 +97,19 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DateCalendar 
                         value={formData.selectedDate}
-                        onChange={onDateChange}/>
+                        onChange={onDateChange}
+                        aria-label="Select reservation date"
+                        />
                     </LocalizationProvider>
                 </div>
                 <div className={styles.formFieldsContainer}>
                         <div>
                             <label htmlFor="time">Time</label>
-                            <select id="time" value={formData['time']} onChange={onInputChange}>
+                            <select 
+                                id="time" 
+                                value={formData['time']} 
+                                onChange={onInputChange} 
+                                aria-label="Select reservation time">
                                 {availableTimes.map(time => (
                                     <option key={time} value={time}>{time}</option>
                                 ))}
@@ -112,7 +118,11 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
                         </div>
                         <div>
                             <label htmlFor="people">People</label>
-                            <select id="people" value={formData.people} onChange={onInputChange}>
+                            <select
+                                id="people" 
+                                value={formData.people} 
+                                onChange={onInputChange} 
+                                aria-label="Select number of people">
                                 {dropdownOptions.people.map(number => (
                                     <option key={number} value={number}>{number}</option>
                                 ))}
@@ -121,7 +131,11 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
                         </div>
                         <div>
                             <label htmlFor="occasion">Occasion</label>
-                            <select id="occasion" value={formData.occasion} onChange={onInputChange}>
+                            <select
+                               id="occasion" 
+                               value={formData.occasion} 
+                               onChange={onInputChange} 
+                               aria-label="Select occasion">
                                 {dropdownOptions.occasion.map(event => (
                                     <option key={event} value={event}>{event}</option>
                                 ))}
@@ -130,7 +144,11 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
                         </div>
                         <div>
                             <label htmlFor="seatingArea">Seating Area</label>
-                            <select id="seatingArea" value={formData.seatingArea} onChange={onInputChange}>
+                            <select 
+                                id="seatingArea" 
+                                value={formData.seatingArea} 
+                                onChange={onInputChange} 
+                                aria-label="Select seating area">
                                 {dropdownOptions.seatingArea.map(area => (
                                     <option key={area} value={area}>{area}</option>
                                 ))}
@@ -139,38 +157,82 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
                         </div>
                 </div>
             </div>
-            <button className={styles.nextBtn} onClick={handleClickNext} type='button'>Next</button>
+            <button 
+                className={styles.nextBtn} 
+                onClick={handleClickNext} 
+                type='button' 
+                aria-label="Proceed to Contact Information"
+                >
+                    Next</button>
             </>}
             {step === 2 && 
                 <>
                 <div className={styles.contactDetails}>
                     <div>
                         <label htmlFor='firstName'>First Name<span>*</span></label>
-                        <input type='text' id='firstName' name='firstName' value={formData.firstName} onChange={onInputChange} onBlur={handleBlur} className={`${touched.firstName && formData.firstName.length < 2 ? styles.errorInput : ''}`}/>
+                        <input 
+                            type='text' 
+                            id='firstName' 
+                            name='firstName' 
+                            value={formData.firstName} 
+                            onChange={onInputChange} 
+                            onBlur={handleBlur} 
+                            className={`${touched.firstName && formData.firstName.length < 2 ? styles.errorInput : ''}`} 
+                            aria-required="true" 
+                            aria-describedby="first-name-error"/>
                     </div>
-                    {touched.firstName && formData.firstName.length < 2 ? <p className={styles.errorMessage}>{showErrorMessage.firstName}</p> : null}
+                    {touched.firstName && formData.firstName.length < 2 ? <p id="first-name-error" aria-live="assertive" className={styles.errorMessage}>{showErrorMessage.firstName}</p> : null}
 
                     <div>
                         <label htmlFor='lastName'>Last Name<span>*</span></label>
-                        <input type='text' id='lastName' name='lastName' value={formData.lastName} onChange={onInputChange} onBlur={handleBlur} className={`${touched.lastName && formData.lastName.length < 2 ? styles.errorInput : ''}`}/>
+                        <input 
+                            type='text' 
+                            id='lastName' 
+                            name='lastName' 
+                            value={formData.lastName} 
+                            onChange={onInputChange} 
+                            onBlur={handleBlur} 
+                            className={`${touched.lastName && formData.lastName.length < 2 ? styles.errorInput : ''}`} 
+                            aria-required="true" 
+                            aria-describedby="last-name-error"/>
                     </div>
-                    {touched.lastName && formData.lastName.length < 2 ? <p className={styles.errorMessage}>{showErrorMessage.lastName}</p> : null}
+                    {touched.lastName && formData.lastName.length < 2 ? <p id="last-name-error" aria-live="assertive" className={styles.errorMessage}>{showErrorMessage.lastName}</p> : null}
 
                     <div>
                         <label htmlFor='email'>Email<span>*</span></label>
-                        <input type='email' id='email' name='email' value={formData.email} onChange={onInputChange} onBlur={handleBlur} className={`${touched.email && !validateEmail(formData.email) ? styles.errorInput : ''}`}/>
+                        <input 
+                            type='email' 
+                            id='email' 
+                            name='email' 
+                            value={formData.email} 
+                            onChange={onInputChange} 
+                            onBlur={handleBlur} 
+                            className={`${touched.email && !validateEmail(formData.email) ? styles.errorInput : ''}`} 
+                            aria-required="true" 
+                            aria-describedby="email-error" 
+                            aria-invalid={touched.email && !validateEmail(formData.email) ? "true" : "false"}/>
                     </div>
-                    {touched.email && !validateEmail(formData.email) ? <p className={styles.errorMessage}>{showErrorMessage.email}</p> : null}
+                    {touched.email && !validateEmail(formData.email) ? <p id="email-error" aria-live="assertive" className={styles.errorMessage}>{showErrorMessage.email}</p> : null}
 
                     <div>
                         <label htmlFor='phone'>Phone<span>*</span></label>
-                        <input type='tel' id='phone' name='phone' value={formData.phone} onChange={onInputChange} onBlur={handleBlur} className={`${touched.phone && !validatePhone(formData.phone) ? styles.errorInput : ''}`}/>
+                        <input 
+                            type='tel' 
+                            id='phone' 
+                            name='phone' 
+                            value={formData.phone} 
+                            onChange={onInputChange} 
+                            onBlur={handleBlur} 
+                            className={`${touched.phone && !validatePhone(formData.phone) ? styles.errorInput : ''}`} 
+                            aria-required="true" 
+                            aria-describedby="phone-error" 
+                            aria-invalid={touched.phone && !validatePhone(formData.phone) ? "true" : "false"}/>
                     </div>
-                    {touched.phone && !validatePhone(formData.phone) ? <p className={styles.errorMessage}>{showErrorMessage.phone}</p> : null}
+                    {touched.phone && !validatePhone(formData.phone) ? <p id="phone-error" aria-live="assertive" className={styles.errorMessage}>{showErrorMessage.phone}</p> : null}
                     
                 </div>
                 <div className={styles.buttons}>
-                    <button type="submit" value="Make Your Reservation" className={styles.reservationBtn}>Make Your Reservation</button>
+                    <button type="submit" value="Make Your Reservation" className={styles.reservationBtn} aria-label="Submit reservation">Make Your Reservation</button>
                 </div>
                 </>
                }

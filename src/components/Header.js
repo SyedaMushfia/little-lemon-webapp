@@ -15,8 +15,8 @@ function Header() {
       <header className={styles.container}>
         {isDesktop && (
           <div className={styles.navbar}>
-            <img src='../../images/logo.jpg' alt='little-lemon-logo' className={styles.logo}/>
-            <nav>
+            <img src='../../images/logo.jpg' alt='little lemon logo' className={styles.logo}/>
+            <nav aria-label='Main navigation'>
               <ul>
                 <li><Link to='/'>Home</Link></li>
                 <li><Link to='/about'>About</Link></li>
@@ -30,18 +30,27 @@ function Header() {
         )}
         {isTab && (
           <div className={styles.navbar}>
-            <img src='../../images/logo.jpg' alt='little-lemon-logo' className={styles.logo}/>
-            <div className={styles.tabNavbar}>
-                <img src='../../images/🦆 icon _hamburger menu_.svg' alt='hamburger-menu'/>
-                <img src='../../images/basket .svg'/>
+            <img src='../../images/logo.jpg' alt='little lemon logo' className={styles.logo}/>
+            <div className={styles.tabNavbar} aria-label="Tablet navigation">
+                <img src='../../images/🦆 icon _hamburger menu_.svg' alt='Open menu' 
+                role="button" 
+                aria-label="Open menu"/>
+                <img src='../../images/basket .svg' alt='View cart' 
+                role="button" 
+                aria-label="View cart"/>
             </div>
           </div>
         )}
         {isMobile && (
-          <div className={styles.mobileNavbar}>
-            <img src='../../images/🦆 icon _hamburger menu_.svg' alt='hamburger-menu'/>
-            <img src='../../images/logo.jpg' alt='little-lemon-logo' className={styles.mobileLogo}/>
-            <img src='../../images/basket .svg'/>
+          <div className={styles.mobileNavbar} aria-label="Mobile navigation">
+            <img src='../../images/🦆 icon _hamburger menu_.svg' alt='Open menu' 
+              role="button" 
+              tabIndex={0} 
+              aria-label="Open menu"/>
+            <img src='../../images/logo.jpg' alt='little lemon logo' className={styles.mobileLogo}/>
+            <img src='../../images/basket .svg' alt='View cart' 
+              role="button" 
+              aria-label="View cart"/>
           </div>
         )}
       </header>
