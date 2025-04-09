@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import { Routes, Route } from 'react-router';
 import Homepage from './homepage/Homepage';
 import AboutPage from './pages/AboutPage';
@@ -10,7 +10,7 @@ import { useState } from 'react';
 import dayjs from 'dayjs';
 
 function Main() {
-  const [availableTimes, setAvailableTimes] = useState(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
+  // const [availableTimes, setAvailableTimes] = useState(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
   const [formData, setFormData] = useState({
     selectedDate: dayjs(),
     time: '17:00',
@@ -23,6 +23,16 @@ function Main() {
     phone: ''
   });
 
+  const updateTimes = (state, action) => {
+    return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+  }
+
+  const initializeTimes = () => {
+    return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+  }
+
+  const [state, dispatch] = useReducer(updateTimes, initializeTimes);
+
   const handleInputChange = (e) => {
     const {id , value } = e.target;
     setFormData(prev => (
@@ -33,6 +43,7 @@ function Main() {
 
   const handleDateChange = (newDate) => {
     setFormData(prev => ({...prev, selectedDate: newDate}));
+    dispatch(newDate);
   };
 
   const clearFormDetails = () => {
