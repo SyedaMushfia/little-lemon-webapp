@@ -6,6 +6,11 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useState } from 'react';
 import { validateEmail, validatePhone } from '../../../utils';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import GroupsIcon from '@mui/icons-material/Groups';
+import CakeIcon from '@mui/icons-material/Cake';
+import DeckIcon from '@mui/icons-material/Deck';
 
 function BookingForm({availableTimes, formData, onDateChange, onInputChange, onClearForm}) {
   const dropdownOptions = {
@@ -30,18 +35,6 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
     phone: false
   })
 
-  
-  const handleClickReserve = () => setStep(1);
-  const handleClickNext = () => setStep(2);
-  const handleClickContact = () => setStep(2);
-  const handleClickSummary = () => setStep(3);
-    
-  const handleBlur = (e) => {
-    const {name} = e.target;
-
-    setTouched(prev => ({...prev, [name]: true}));
-  }
-
   const getIsFormValid = () => {
     return (
       formData.firstName?.trim() && 
@@ -50,30 +43,48 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
       formData.phone?.trim()
     ); 
   }; 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setTouched({
+  
+  const handleClickReserve = () => setStep(1);
+  const handleClickNext = () => {
+    if (step === 2) {
+      setTouched({
         firstName: true,
         lastName: true,
         email: true,
         phone: true
       });
-    
-    if (!getIsFormValid()) return;
+  
+      if (!getIsFormValid()) return;
 
-    alert('Your table is booked!');
-    console.log(formData);
-    setStep(3);
-    onClearForm();
-
-    setTouched({
+      setTouched({
         firstName: false,
         lastName: false,
         email: false,
         phone: false
       });
+    }
+  
+    setStep(prev => prev + 1);
+  };
+  
+  const handleClickContact = () => setStep(2);
+  const handleClickConfirm = () => setStep(3);
+    
+  const handleBlur = (e) => {
+    const {name} = e.target;
+
+    setTouched(prev => ({...prev, [name]: true}));
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    alert('Your table is booked!');
+    console.log(formData);
+    setStep(3);
+    onClearForm();
+    setStep(1);
+    
   }
 
   return (
@@ -82,13 +93,13 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
         <div className={styles.formSteps}>
             <div className={styles.formStepsBtns}>
                 <div>1</div>
-                <button type='button' onClick={handleClickReserve} aria-label="Step 1: Reserve">RESERVE</button></div>
+                <button type='button' role='button' onClick={handleClickReserve} aria-label="Step 1: Reserve">RESERVE</button></div>
             <div className={styles.formStepsBtns}>
                 <div>2</div>
-                <button type='button' onClick={handleClickContact} aria-label="Step 2: Contact">CONTACT</button></div>
+                <button type='button' role='button' onClick={handleClickContact} aria-label="Step 2: Contact">CONTACT</button></div>
             <div className={styles.formStepsBtns}>
                 <div>3</div>
-                <button type='button' onClick={handleClickSummary} aria-label="Step 3: Summary">SUMMARY</button></div>
+                <button type='button' role='button' onClick={handleClickConfirm} aria-label="Step 3: Confirm">CONFIRM</button></div>
         </div>
         <form onSubmit={handleSubmit}>
             {step === 1 && <>
@@ -110,7 +121,7 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
                                 value={formData['time']} 
                                 onChange={onInputChange} 
                                 aria-label="Select reservation time">
-                                {availableTimes.map(time => (
+                                {Array.isArray(availableTimes) && availableTimes.map(time => (
                                     <option key={time} value={time}>{time}</option>
                                 ))}
                             </select>
@@ -161,6 +172,7 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
                 className={styles.nextBtn} 
                 onClick={handleClickNext} 
                 type='button' 
+                role='button'
                 aria-label="Proceed to Contact Information"
                 >
                     Next</button>
@@ -231,10 +243,59 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
                     {touched.phone && !validatePhone(formData.phone) ? <p id="phone-error" aria-live="assertive" className={styles.errorMessage}>{showErrorMessage.phone}</p> : null}
                     
                 </div>
-                <div className={styles.buttons}>
-                    <button type="submit" value="Make Your Reservation" className={styles.reservationBtn} aria-label="Submit reservation">Make Your Reservation</button>
-                </div>
+                <button 
+                className={styles.nextBtn} 
+                onClick={handleClickNext} 
+                type='button' 
+                role='button'
+                aria-label="Proceed to Confirm and Reserve"
+                >
+                    Next</button>
                 </>
+               }
+            {step === 3 && 
+               <>
+               <div className={styles.confirmDetails}>
+                    <h2>Booking Summary</h2>
+                    <div className={styles.lineBreak}>{/*Line Break*/}</div>
+                    <div>
+                        <CalendarMonthIcon />
+                        <p>{formData.selectedDate.format('MMMM D, YYYY')}</p>
+                    </div>
+                    <div>
+                        <AccessTimeIcon />
+                        <p>{formData['time']}</p>
+                    </div>
+                    <div>
+                        <GroupsIcon />
+                        <p>{formData.people}</p>
+                    </div>
+                    <div>
+                        <CakeIcon />
+                        <p>{formData.occasion}</p>
+                    </div>
+                    <div>
+                        <DeckIcon />
+                        <p>{formData.seatingArea}</p>
+                    </div>
+                    <div className={styles.lineBreak}>{/*Line Break*/}</div>
+                    <div>
+                        <p>Name:</p>
+                        <p>{`${formData.firstName} ${formData.lastName}`}</p>
+                    </div>
+                    <div>
+                        <p>Email:</p>
+                        <p>{formData.email}</p>
+                    </div>
+                    <div>
+                        <p>Phone:</p>
+                        <p>{formData.phone}</p>
+                    </div>
+               </div>
+               <div className={styles.buttons}>
+                <button type="submit" value="Make Your Reservation" className={styles.reservationBtn} aria-label="Submit reservation">Make Your Reservation</button>
+               </div>
+               </>
                }
         </form>
     </div>
