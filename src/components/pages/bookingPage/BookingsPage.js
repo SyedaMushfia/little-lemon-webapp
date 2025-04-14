@@ -2,7 +2,7 @@ import React from 'react'
 import BookingForm from './BookingForm'
 import styles from '../bookingPage/bookingsPage.module.css'
 
-function BookingsPage({availableTimes, formData, onDateChange, onInputChange, onClearForm}) {
+function BookingsPage({availableTimes, formData, onDateChange, onInputChange, onClearForm, onSubmitForm}) {
   return (
     <>
       <div className={styles.imgContainer} role="banner" aria-labelledby="reservation-heading">
@@ -12,7 +12,8 @@ function BookingsPage({availableTimes, formData, onDateChange, onInputChange, on
       <section>
         <BookingForm availableTimes={availableTimes} formData={formData} onDateChange={onDateChange}
           onInputChange={onInputChange}
-          onClearForm={onClearForm}/>
+          onClearForm={onClearForm}
+          onSubmitForm={onSubmitForm}/>
       </section>
     </>
   )

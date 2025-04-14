@@ -1,26 +1,32 @@
 import React, { useReducer } from 'react'
-import { Routes, Route } from 'react-router';
+import { Routes, Route, useNavigate } from 'react-router';
 import Homepage from './homepage/Homepage';
 import AboutPage from './pages/AboutPage';
 import MenuPage from './pages/MenuPage';
 import BookingsPage from './pages/bookingPage/BookingsPage';
 import OrderOnline from './pages/OrderOnline';
 import LoginPage from './pages/LoginPage';
+import ConfirmedBooking from './pages/bookingPage/ConfirmedBooking';
 import { useState } from 'react';
 import dayjs from 'dayjs';
 import { fetchAPI, submitAPI } from '../utils';
 
 // This is for unit testing
 export const updateTimes = (state, action) => {
-  return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+  if (action.type === 'UPDATE_TIMES')
+    return fetchAPI(new Date(action.payload));
+  return state;
 }
 
 export const initializeTimes = () => {
-  return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+  const today = new Date();
+  return fetchAPI(today);
 }
 
+
 function Main() {
-  // const [availableTimes, setAvailableTimes] = useState(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     selectedDate: dayjs(),
     time: '17:00',
@@ -63,11 +69,27 @@ function Main() {
 
   const clearFormDetails = () => {
     setFormData({
+        selectedDate: dayjs(), 
+        time: '17:00',
+        people: '1 person',
+        occasion: 'Birthday',
+        seatingArea: 'Indoor',
         firstName: '',
         lastName: '',
         email: '',
         phone: '',
     })
+  }
+
+  const submitForm = (formData) => {
+    const response = submitAPI(formData);
+
+    if (response) {
+      localStorage.setItem('confirmedBooking', JSON.stringify(formData));
+      clearFormDetails();
+      navigate('./booking-confirmed');
+    }
+    else alert('Something went wrong! Please try again.')
   }
 
   return (
@@ -76,9 +98,10 @@ function Main() {
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/menu" element={<MenuPage />} />
-        <Route path="/bookings" element={<BookingsPage availableTimes={state} formData={formData} onDateChange={handleDateChange} onInputChange={handleInputChange} onClearForm={clearFormDetails}/>} />
+        <Route path="/bookings" element={<BookingsPage availableTimes={state} formData={formData} onDateChange={handleDateChange} onInputChange={handleInputChange} onClearForm={clearFormDetails} onSubmitForm={submitForm}/>}/>
         <Route path="/orderonline" element={<OrderOnline />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path='/booking-confirmed' element={<ConfirmedBooking />}/>
     </Routes>
   </main>
   )

@@ -12,7 +12,7 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import CakeIcon from '@mui/icons-material/Cake';
 import DeckIcon from '@mui/icons-material/Deck';
 
-function BookingForm({availableTimes, formData, onDateChange, onInputChange, onClearForm}) {
+function BookingForm({availableTimes, formData, onDateChange, onInputChange, onClearForm, onSubmitForm}) {
   const dropdownOptions = {
     people: ['1 person', '2 people', '3 people', '4 people', '5 people'],
     occasion: ['Birthday', 'Anniversary'],
@@ -79,12 +79,8 @@ function BookingForm({availableTimes, formData, onDateChange, onInputChange, onC
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    alert('Your table is booked!');
+    onSubmitForm(formData);
     console.log(formData);
-    setStep(3);
-    onClearForm();
-    setStep(1);
-    
   }
 
   return (
