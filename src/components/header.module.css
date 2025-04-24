@@ -2,6 +2,7 @@
 
 .container {
     height: 120px;
+    position: relative;
 }
 
 .navbar {
@@ -35,6 +36,14 @@
     text-decoration: none;
 }
 
+.container .navbar ul li a:hover {
+    color: #f4ce14;
+}
+
+.container .navbar ul li .activePage {
+    color: #495e57;
+}
+
 .logo {
     width: 225px;
     height: 55%;
@@ -50,6 +59,37 @@
     width: 35%;
 }
 
+.navbarDropdown {
+    width: 98.5vw;
+    background-color: white;
+    position: absolute;
+}
+
+.navbarDropdown nav ul {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5vh;
+    background-color: white;
+    list-style: none;
+    padding-bottom: 8vh;
+}
+
+.navbarDropdown nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbarDropdown nav ul li a:hover {
+    color: #f4ce14;
+}
+
+.navbarDropdown nav ul li .activePage {
+    color: #495e57;
+
+}
+
 .mobileNavbar {
     display: flex;
     align-items: center;
@@ -60,12 +100,28 @@
     margin: auto;
 }
 
-.mobileNavbar img:nth-child(1), img:nth-child(3) {
+.mobileIcons {
     width: 7vw;
 }
 
 .mobileLogo {
-    width: 45vw;
+    width: 35vw;
+}
+
+@media (max-width: 1024px) {
+    .navbarDropdown {
+        width: 98.5vw;
+    }
+
+    .navbarDropdown nav ul {
+        gap: 4.25vh;
+    }
+}
+
+@media (max-width: 425px) {
+    .navbarDropdown nav ul {
+        padding-top: 5vh;
+    }
 }
 
 @media (max-width: 1233px) and (min-width: 1024px) {
@@ -83,4 +139,7 @@
         gap: 20%;
     }
     
+    .navbarDropdown {
+        width: 100vw;
+    }
 }
