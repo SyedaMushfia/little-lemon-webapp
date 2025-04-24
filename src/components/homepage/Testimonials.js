@@ -2,8 +2,12 @@ import React from 'react'
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import styles from '../homepage/testimonials.module.css'
+import { motion } from 'motion/react';
+import useVisibility from '../../hooks/useVisibility';
 
 function Testimonials() {
+  const [isVisible, targetRef] = useVisibility();
+
   const people = [{
     name: 'George Mike',
     image: '../images/person2.jpg',
@@ -35,7 +39,12 @@ function Testimonials() {
     <>
       <div className={styles.container}>
       <h1>Testimonials</h1>
-      <div className={styles.cardContainer}>
+      <motion.div 
+        className={styles.cardContainer}
+        ref={targetRef}
+        initial={{ y: 100, opacity: 0 }}
+        animate={isVisible ? { y: 0, opacity: 1 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}>
         {people.map(person => (
             <div key={person.name} className={styles.card} role="article" aria-labelledby={`testimonial-${person.name}`}>
               <img src={person.image} alt={person.name}/>
@@ -50,7 +59,7 @@ function Testimonials() {
               <p>{person.testimonial}</p>
             </div>
         ))}
-      </div>
+      </motion.div>
      </div>
     </>
   )

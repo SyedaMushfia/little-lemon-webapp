@@ -2,6 +2,8 @@ import React from 'react'
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import styles from '../homepage/specials.module.css';
 import useViewportWidth from '../../hooks/useViewportWidth';
+import useVisibility from '../../hooks/useVisibility';
+import { motion } from 'motion/react';
 
 function Specials() {
   const productDetails = [{
@@ -23,6 +25,7 @@ function Specials() {
     image: '../images/lemon-dessert.jpg'
 }]
 
+const [isVisible, targetRef] = useVisibility();
 const width = useViewportWidth();
 
 const isDesktop = width > 768;
@@ -40,7 +43,14 @@ const isMobile = width <= 425;
          </div>
          <div className={styles.desktopProductCard}>
          {productDetails.map(food => (
-           <div className={styles.desktopProductDetails} key={food.name}>
+           <motion.div 
+           className={styles.desktopProductDetails} 
+           key={food.name}
+           ref={targetRef}
+           initial={{ y: 100, opacity: 0 }}
+           animate={isVisible ? { y: 0, opacity: 1 } : {}}
+           transition={{ duration: 0.6, ease: "easeOut" }}
+           >
                <img src={food.image} alt={food.name}/>
                <div className={styles.name}>
                    <h1>{food.name}</h1>
@@ -51,7 +61,7 @@ const isMobile = width <= 425;
                  <h3>Order a delivery</h3>
                  <DeliveryDiningIcon />
                </div>
-           </div>
+           </motion.div>
          ))}
          </div>
         </div>
@@ -64,7 +74,13 @@ const isMobile = width <= 425;
          <div className={styles.tabProductCard}>
          {productDetails.map(food => (
              <>
-               <div className={styles.tabProductDetails} key={food.name}>
+               <motion.div 
+                className={styles.tabProductDetails} 
+                key={food.name}
+                ref={targetRef}
+                initial={{ y: 100, opacity: 0 }}
+                animate={isVisible ? { y: 0, opacity: 1 } : {}}
+                transition={{ duration: 0.6, ease: "easeOut" }}>
                  <div>
                    <h1>{food.name}</h1>
                    <p className={styles.description}>{food.description}</p>
@@ -75,7 +91,7 @@ const isMobile = width <= 425;
                    </div>}
                  </div>
                  {isMobile ? null : <img src={food.image} alt={food.name}/>}
-               </div>
+               </motion.div>
              </>
            ))}
          </div>
