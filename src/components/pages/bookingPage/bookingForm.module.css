@@ -25,13 +25,18 @@
 }
 
 .container .formSteps .formStepsBtns div {
-    background-color: #fbdabb;
+    background-color: #f4ce14;
     width: 35px;
     height: 25px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.container .formSteps .activeStep div {
+    background-color: #495e57;
+    color: white;
 }
 
 .container .formSteps .formStepsBtns button {
@@ -43,6 +48,10 @@
     cursor: pointer;
 }
 
+.container .formSteps .activeStep button {
+    font-weight: 600;
+}
+
 .container .form {
     all: unset;
     display: flex;
@@ -52,6 +61,10 @@
 
 .container .form .calendar {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .container .form .formFieldsContainer {
@@ -82,6 +95,7 @@
     color: #525151;
 }
 
+
 .container .form .formFieldsContainer .dropdownIcon {
     position: absolute;
     right: 0;
@@ -96,12 +110,21 @@
 
 .container .nextBtn {
     all: unset;
-    background-color: #fbdabb;
+    background-color: #f4ce14;
     padding: 15px 35px;
     font-size: 0.85rem;
     margin-top: 3%;
     margin-right: 15%;
     float: right;
+}
+
+.container .nextBtn:active {
+    background-color: #495e57;
+    color: white;
+}
+
+.container .disabledBtn {
+    cursor: not-allowed;
 }
 
 .container .buttons {
@@ -112,10 +135,15 @@
 
 .container .buttons .reservationBtn {
     all: unset;
-    background-color: #fbdabb;
+    background-color: #f4ce14;
     padding: 15px 35px;
     font-size: 0.85rem;
     margin-top: 3%;
+}
+
+.container .buttons .reservationBtn:active {
+    background-color: #495e57;
+    color: white;
 }
 
 .contactDetails, .confirmDetails {
@@ -161,11 +189,11 @@
     color: red;
 }
 
-.contactDetails .errorInput {
-    border: 1px red solid;
+.contactDetails .errorInput, .formFieldsContainer .errorInput {
+    border: 1px red solid !important;
 }
 
-.contactDetails .errorMessage {
+.contactDetails .errorMessage, .formFieldsContainer .errorMessage {
     all: unset;
     color: red;
     font-size: 0.65rem;
@@ -174,12 +202,28 @@
     margin-bottom: -20px;
 }
 
+.formFieldsContainer .errorMessage {
+    all: unset;
+    color: red;
+    font-size: 0.65rem;
+    margin-left: 38%;
+    margin-top: -40px;
+    margin-bottom: -15px;
+}
+
+.calendar .dateError {
+    all: unset;
+    color: red;
+    font-size: 0.65rem;
+    margin-top: -4%;
+    margin-bottom: 2%;
+}
+
 .confirmDetails div {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: -25px 20px;
-    /* background-color: yellow; */
 }
 
 .confirmDetails div p {

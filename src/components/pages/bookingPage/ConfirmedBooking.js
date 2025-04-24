@@ -15,10 +15,10 @@ function ConfirmedBooking() {
             <div className={styles.confirmationContainer}>
                 <h1>Your table is booked!</h1>
                 <div className={styles.dateContainer}>
-                    <p className={styles.day}>{dayjs(bookingData?.selectedDate).format('DD')}</p>
-                    <p className={styles.month}>{dayjs(bookingData?.selectedDate).format('MMMM')}</p>
+                    <p className={styles.day}>{dayjs(bookingData?.selectedDate)?.format('DD')}</p>
+                    <p className={styles.month}>{dayjs(bookingData?.selectedDate)?.format('MMMM')}</p>
                     <div className={styles.dateAndTime}>
-                    <p>{dayjs(bookingData?.selectedDate).format('DD.MM.YYYY')}</p>
+                    <p>{dayjs(bookingData?.selectedDate)?.format('DD.MM.YYYY')}</p>
                     <p>{dayjs(bookingData?.time, 'HH:mm').format('h:mm A')}</p>
                     </div>
                 </div>
